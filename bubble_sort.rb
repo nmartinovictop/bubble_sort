@@ -1,37 +1,31 @@
 # > bubble_sort([4,3,78,2,0,2])
 # => [0,2,2,3,4,78]
-array = []
-
-(1...1000).each do |num|
-    array.push(rand(25))
-end
 
 
-def bubble_sort(array)
+def bubble_sort(list_to_sort)
 
-    sorted = false
+  sorted = false
 
-    while sorted == false do
-        sorted = true
-        k = 0
-        (0...array.length-1 - k).each do |index|
-            if array[index] > array[index+1] 
-                array[index], array[index+1] = array[index+1],array[index]
-                sorted = false
-                k += 1
-            end
+  while !sorted
+    sorted = true
+    runs = list_to_sort.length-1
 
-        end
-
+    (0...runs).each do |ele|
+      if ele == runs
+        return list_to_sort
+      end
+      if list_to_sort[ele] > list_to_sort[ele+1]
+        list_to_sort[ele+1], list_to_sort[ele] = list_to_sort[ele], list_to_sort[ele+1]
+        sorted = false
+      end
+      runs - 1
     end
-        
-
-
-
-
-    array
+  end
+  list_to_sort
 end
 
 
 
-p bubble_sort(array)
+
+
+p bubble_sort([4,3,78,2,0,2])
